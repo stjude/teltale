@@ -1,0 +1,11 @@
+site_name: "Teltale - St. Jude"
+repo_url: "https://github.com/stjude/teltale"
+
+site_description: "Compute telomeric read fractions in a BAM file."
+site_author: "St. Jude Cloud"
+copyright: "© 2021 St. Jude Children's Research Hospital"
+
+nav:
+  - "Home": "index.md"
+
+theme: cosmo
