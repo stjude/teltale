@@ -1,11 +1,55 @@
-# teltale
+<p align="center">
 
-**teltale** is a program that computes the fraction of telomeric reads in a BAM file.  A read is
-considered telomeric if it contains at least seven consecutive occurrences of the telomere motif
-TTAGGG or its reverse complement CCCTAA.  The fraction of telomeric reads is the number of
-telomeric reads divided by the total number of reads in the BAM file.  Reads marked as Duplicate
-or Failed QC are ignored and are excluded from the counts.  This program is intended for BAM files
-containing whole-genome sequencing (WGS) data.
+  <h1 align="center">
+    Teltale
+  </h1>
+
+  <p align="center">
+   <a href="https://github.com/stjude/teltale" target="_blank">
+     <img alt="Status"
+          src="https://img.shields.io/badge/status-active-success.svg" />
+   </a>
+   <a href="https://github.com/stjude/teltale/issues" target="_blank">
+     <img alt="Github Issues"
+          src="https://img.shields.io/github/issues/stjude/teltale" />
+   </a>
+   <a href="https://github.com/stjude/teltale/pulls" target="_blank">
+     <img alt="Pull Requests"
+          src="https://img.shields.io/github/issues-pr/stjude/teltale" />
+   </a>
+   <a href="https://github.com/stjude/teltale/blob/master/LICENSE.md" target="_blank">
+     <img alt="License: MIT"
+          src="https://img.shields.io/badge/License-MIT-blue.svg" />
+   </a>
+   <br />
+   <a href="https://github.com/stjude/teltale/actions?query=workflow%3ADocumentation" target="_blank">
+     <img alt="Actions: Documentation Status"
+          src="https://github.com/stjude/teltale/workflows/Documentation/badge.svg" />
+   </a>
+   <a href="https://github.com/stjude/teltale/actions?query=workflow%3APackage" target="_blank">
+     <img alt="Actions: Package Status"
+          src="https://github.com/stjude/teltale/workflows/Package/badge.svg" />
+   </a>
+  </p>
+
+
+  <p align="center">
+  
+`teltale` is a program that computes the fraction of telomeric reads in a BAM file. A read is considered telomeric if it contains at least seven consecutive occurrences of the telomere motif `TTAGGG` or its reverse complement `CCCTAA`. The fraction of telomeric reads is the number of telomeric reads divided by the total number of reads in the BAM file. Reads marked as Duplicate or Failed QC are ignored and are excluded from the counts. This program is intended for BAM files containing whole-genome sequencing (WGS) data.
+   <br />
+   <a href="https://stjude.github.io/teltale/"><strong>Explore the docs »</strong></a>
+   <br />
+   <br />
+   <a href="https://github.com/stjude/teltale/issues/new?assignees=&labels=&template=feature_request.md&title=Descriptive%20Title&labels=enhancement">Request Feature</a>
+    | 
+   <a href="https://github.com/stjude/teltale/issues/new?assignees=&labels=&template=bug_report.md&title=Descriptive%20Title&labels=bug">Report Bug</a>
+   <br />
+    ⭐ Consider starring the repo! ⭐
+   <br />
+  </p>
+</p>
+
+---
 
 ## Build
 
