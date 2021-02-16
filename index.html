@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Compute telomeric read fractions in a BAM file.">
+        <meta name="author" content="St. Jude Cloud">
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Teltale - St. Jude</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/purebasic.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Teltale - St. Jude</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/stjude/teltale/edit/master/docs/index.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#build" class="nav-link">Build</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#usage" class="nav-link">Usage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#input" class="nav-link">Input</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#output" class="nav-link">Output</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#errors" class="nav-link">Errors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#notes" class="nav-link">Notes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#contact" class="nav-link">Contact</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p align="center">
+
+  <h1 align="center">
+    Teltale
+  </h1>
+
+  <p align="center">
+   <a href="https://github.com/stjude/teltale" target="_blank">
+     <img alt="Status"
+          src="https://img.shields.io/badge/status-active-success.svg" />
+   </a>
+   <a href="https://github.com/stjude/teltale/issues" target="_blank">
+     <img alt="Github Issues"
+          src="https://img.shields.io/github/issues/stjude/teltale" />
+   </a>
+   <a href="https://github.com/stjude/teltale/pulls" target="_blank">
+     <img alt="Pull Requests"
+          src="https://img.shields.io/github/issues-pr/stjude/teltale" />
+   </a>
+   <a href="https://github.com/stjude/teltale/blob/master/LICENSE.md" target="_blank">
+     <img alt="License: MIT"
+          src="https://img.shields.io/badge/License-MIT-blue.svg" />
+   </a>
+   <br />
+   <a href="https://github.com/stjude/teltale/actions?query=workflow%3ADocumentation" target="_blank">
+     <img alt="Actions: Documentation Status"
+          src="https://github.com/stjude/teltale/workflows/Documentation/badge.svg" />
+   </a>
+   <a href="https://github.com/stjude/teltale/actions?query=workflow%3APackage" target="_blank">
+     <img alt="Actions: Package Status"
+          src="https://github.com/stjude/teltale/workflows/Package/badge.svg" />
+   </a>
+  </p>
+
+
+  <p align="center">
+
+`teltale` is a program that computes the fraction of telomeric reads in a BAM file. A read is considered telomeric if it contains at least seven consecutive occurrences of the telomere motif `TTAGGG` or its reverse complement `CCCTAA`. The fraction of telomeric reads is the number of telomeric reads divided by the total number of reads in the BAM file. Reads marked as Duplicate or Failed QC are ignored and are excluded from the counts. This program is intended for BAM files containing whole-genome sequencing (WGS) data.
+   <br />
+   <a href="https://stjude.github.io/teltale/"><strong>Explore the docs »</strong></a>
+   <br />
+   <br />
+   <a href="https://github.com/stjude/teltale/issues/new?assignees=&labels=&template=feature_request.md&title=Descriptive%20Title&labels=enhancement">Request Feature</a>
+    | 
+   <a href="https://github.com/stjude/teltale/issues/new?assignees=&labels=&template=bug_report.md&title=Descriptive%20Title&labels=bug">Report Bug</a>
+   <br />
+    ⭐ Consider starring the repo! ⭐
+   <br />
+  </p>
+</p>
+
+<hr />
+<h2 id="build">Build</h2>
+<p><strong>teltale</strong> uses the <a href="https://github.com/pezmaster31/bamtools">BamTools API</a>, version 2.4.0 or later.
+Modify the paths below to refer to the BamTools include and lib directories.</p>
+<pre><code>$ g++ -std=c++0x -O3 -o teltale -I ~/bamtools/include/ -L ~/bamtools/lib/ teltale.cpp -lbamtools -lz
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code>$ teltale --help
+
+teltale 2.0
+
+Usage: teltale bam_file
+</code></pre>
+<h2 id="input">Input</h2>
+<p>The input is a single BAM file.  Its name is specifed as the sole command-line argument.</p>
+<h2 id="output">Output</h2>
+<p>The output is a single line written to the standard output stream containing four tab-delimited
+values:
+* total number of reads in the BAM file
+* number of telomeric reads in the BAM file
+* fraction of telomeric reads
+* name of the BAM file</p>
+<h2 id="errors">Errors</h2>
+<p>An error message is written to the standard error stream if the input file cannot be opened or if it
+is not a valid BAM file.</p>
+<h2 id="notes">Notes</h2>
+<p>The time taken by the program is proportional to the size of the input file.</p>
+<p>When comparing the fraction of telomeric reads from several BAM files, be sure that the BAM files
+have the same read length.  The fraction computed for a BAM file having a read length of 150 is not
+directly comparable to the fraction computed for a BAM file having a read length of 100, because it
+is easier to find a sequence of seven consecutive occurrences in longer reads.</p>
+<h2 id="contact">Contact</h2>
+<p>Contact Stephen V. Rice with questions, suggestions, and other feedback.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>© 2021 St. Jude Children's Research Hospital</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2021-02-16 17:01:54.735469+00:00
+-->
