@@ -12,7 +12,7 @@ jobs:
         uses: jordan-rash/cgc-go@v0.1.4
         with:
           file_location: "cgc/teltale.cwl"
-          shortid: "stjude/teltale"
+          shortid: "stjude/teltale/teltale"
+          devkey: ${{ secrets.CGC_TOKEN }}
         env: 
           CGC_TOKEN: ${{ secrets.CGC_TOKEN }}
-    
