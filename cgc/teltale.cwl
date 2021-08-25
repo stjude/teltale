@@ -41,7 +41,7 @@
     "hints": [
         {
             "class": "DockerRequirement",
-            "dockerPull": "ghcr.io/stjude/teltale:latest"
+            "dockerPull": "cgc-images.sbgenomics.com/stjude/teltale:latest"
         }
     ],
     "stdout": "output.txt",
