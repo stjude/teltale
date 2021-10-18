@@ -34,7 +34,7 @@
   </p>
 
 <p align="center">
-`teltale` is a program that computes the fraction of telomeric reads in a BAM file. A read is considered telomeric if it contains at least seven consecutive occurrences of the telomere motif `TTAGGG` or its reverse complement `CCCTAA`. The fraction of telomeric reads is the number of telomeric reads divided by the total number of reads in the BAM file. Reads marked as Duplicate or Failed QC are ignored and are excluded from the counts. This program is intended for BAM files containing whole-genome sequencing (WGS) data.
+  <code>teltale</code> is a program that computes the fraction of telomeric reads in a BAM file. A read is considered telomeric if it contains at least seven consecutive occurrences of the telomere motif <code>TTAGGG<code/> or its reverse complement <code>CCCTAA<code/>. The fraction of telomeric reads is the number of telomeric reads divided by the total number of reads in the BAM file. Reads marked as Duplicate or Failed QC are ignored and are excluded from the counts. This program is intended for BAM files containing whole-genome sequencing (WGS) data.
    <br />
    <a href="https://stjude.github.io/teltale/"><strong>Explore the docs »</strong></a>
    <br />
