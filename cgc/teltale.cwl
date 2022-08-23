@@ -54,7 +54,6 @@
     "sbg:wrapperLicense": "Apache 2.0 License",
     "sbg:license": "Apache 2.0 License",
     "sbg:categories": [
-        "DNA",
         "WGS"
     ]
 }
